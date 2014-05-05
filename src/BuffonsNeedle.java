@@ -6,7 +6,7 @@ public class BuffonsNeedle {
 		int l = 1, d = 1; // Define length of needle and distance
 		int w = 2 * d, h = d;
 		
-		int yes = 0, no = 0;
+		YesOther yo = new YesOther();
 		
 		boolean running = true;
 		
@@ -18,11 +18,19 @@ public class BuffonsNeedle {
 				while (running) {
 					Point t = c.center(Math.random() * (double) d, Math.random() * 180D);
 					if (t.theta % 180D == 0) {
-						
+						yo.yes++;
 					}
+					else {
+						System.out.println(t.theta);
+					}
+					yo.other++;
 				}
+				System.out.println(2D * yo.yes / yo.other);
 			}
 		};
+		
+		Thread t = new Thread(r);
+		t.start();
 
 	}
 	
@@ -34,11 +42,16 @@ public class BuffonsNeedle {
 
 class Point {
 	
-	double x,y,theta;
+	double x,theta;
 	
 	public Point(double x, double theta) {
 		this.x = x;
 		this.theta = theta;
 	}
+}
+
+class YesOther {
+	
+	public int yes = 0, other = 0;
 	
 }
