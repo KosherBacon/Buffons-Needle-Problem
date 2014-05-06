@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -9,6 +11,8 @@ public class BuffonsNeedle {
 		
 		int l = 1, d = 1; // Define length of needle and distance
 		int w = 2 * d;
+		
+		BigDecimal w2 = new BigDecimal(w);
 		
 		YesOther yo = new YesOther();
 		
@@ -68,11 +72,19 @@ public class BuffonsNeedle {
 			@Override
 			public void run() {
 				while (running) {
-				  
+					System.out.print(w2.multiply(new BigDecimal(yo.other)).divide(new BigDecimal(yo.yes), 20, RoundingMode.HALF_UP) + "\r");
+					try {
+						java.lang.Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		};
-	  
+		
+		Thread print = new Thread(printer);
+		print.start();
+		
 	}
 	
 	interface Center {
