@@ -23,16 +23,20 @@ public class BuffonsNeedle {
 						yo.yes++;
 					}
 					else {
-						if (t.x < d/2D && left.isLeft(t.theta) + t.x > d/2D) { // Far left case
+						// Far left case
+						if (t.x < d/2D && left.isLeft(t.theta) + t.x > d/2D) {
 							yo.yes++;
 						}
-						else if (t.x > d/2D && t.x - left.isLeft(t.theta) < d/2D) { // Middle left case
+						// Middle left case
+						else if (t.x > d/2D && t.x - left.isLeft(t.theta) < d/2D) {
 							yo.yes++;
 						}
-						else if (t.x < 2D * d - (d/2D) && t.x + left.isLeft(t.theta) > 2D * d - (d/2D)) { // Middle right case
+						// Middle right case
+						else if (t.x < 2D * d - (d/2D) && t.x + left.isLeft(t.theta) > 2D * d - (d/2D)) {
 							yo.yes++;
 						}
-						else if (t.x > 2D * d - (d/2D) && t.x - left.isLeft(t.theta) < 2D * d - (d/2D)) { // Far right case
+						// Far right case
+						else if (t.x > 2D * d - (d/2D) && t.x - left.isLeft(t.theta) < 2D * d - (d/2D)) {
 							yo.yes++;
 						}
 					}
