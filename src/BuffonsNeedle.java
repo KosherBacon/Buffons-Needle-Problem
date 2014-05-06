@@ -4,7 +4,7 @@ public class BuffonsNeedle {
 	public static void main(String[] args) {		
 		
 		int l = 1, d = 1; // Define length of needle and distance
-		int w = 2 * d, h = d;
+		int w = 2 * d;
 		
 		YesOther yo = new YesOther();
 		
@@ -32,11 +32,11 @@ public class BuffonsNeedle {
 							yo.yes++;
 						}
 						// Middle right case
-						else if (t.x < 2D * d - (d/2D) && t.x + left.isLeft(t.theta) > 2D * d - (d/2D)) {
+						else if (t.x < w - (d/2D) && t.x + left.isLeft(t.theta) > w - (d/2D)) {
 							yo.yes++;
 						}
 						// Far right case
-						else if (t.x > 2D * d - (d/2D) && t.x - left.isLeft(t.theta) < 2D * d - (d/2D)) {
+						else if (t.x > w - (d/2D) && t.x - left.isLeft(t.theta) < w - (d/2D)) {
 							yo.yes++;
 						}
 					}
