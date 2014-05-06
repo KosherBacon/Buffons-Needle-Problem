@@ -1,3 +1,7 @@
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class BuffonsNeedle {
 
@@ -13,6 +17,19 @@ public class BuffonsNeedle {
 		Center c = (x,theta) -> {return new Point(x,theta % 90D);};
 		
 		Left left = (theta) -> {return l / 2D * Math.cos(theta * Math.PI / 180D);};
+		
+		int cpus = Runtime.getRuntime().availableProcessors();
+		int maxThreads = cpus * 1;
+		maxThreads = (maxThreads > 0 ? maxThreads : 1);
+		
+		ExecutorService executorService =
+			new ThreadPoolExecutor(
+				maxThreads,
+				maxThreads,
+				1,
+				TimeUnit.MINUTES, 
+				new ArrayBlockingQueue<Runnable>(maxThreads, true),
+				new ThreadPoolExecutor.CallerRunsPolicy());
 		
 		Runnable r = new Runnable() {
 			@Override
@@ -41,15 +58,21 @@ public class BuffonsNeedle {
 						}
 					}
 					yo.other++;
-					System.out.println(2D * yo.other / yo.yes);
-
 				}
 			}
 		};
 		
-		Thread t = new Thread(r);
-		t.start();
-
+		executorService.submit(r);
+	  
+		Runnable printer = new Runnable() {
+			@Override
+			public void run() {
+				while (running) {
+				  
+				}
+			}
+		};
+	  
 	}
 	
 	interface Center {
