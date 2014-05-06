@@ -12,6 +12,8 @@ public class BuffonsNeedle {
 		
 		Center c = (x,theta) -> {return new Point(x,theta % 90D);};
 		
+		Left left = (theta) -> {return l / 2D * Math.cos(theta * Math.PI / 180D);};
+		
 		Runnable r = new Runnable() {
 			@Override
 			public void run() {
@@ -21,12 +23,23 @@ public class BuffonsNeedle {
 						yo.yes++;
 					}
 					else {
-						if (l / 2D * Math.cos(t.theta * Math.PI / 180D) < l / 2D) {
+						if (t.x < d/2D && left.isLeft(t.theta) + t.x > d/2D) { // Far left case
+							yo.yes++;
+						}
+						else if (t.x > d/2D && t.x - left.isLeft(t.theta) < d/2D) { // Middle left case
+							yo.yes++;
+						}
+						else if (t.x < 2D * d - (d/2D) && t.x + left.isLeft(t.theta) > 2D * d - (d/2D)) { // Middle right case
+							yo.yes++;
+						}
+						else if (t.x > 2D * d - (d/2D) && t.x - left.isLeft(t.theta) < 2D * d - (d/2D)) { // Far right case
+							yo.yes++;
 						}
 					}
 					yo.other++;
+					System.out.println(2D * yo.other / yo.yes);
+
 				}
-				System.out.println(2D * yo.yes / yo.other);
 			}
 		};
 		
@@ -37,6 +50,10 @@ public class BuffonsNeedle {
 	
 	interface Center {
 		Point center(double x, double theta);
+	}
+	
+	interface Left {
+		double isLeft(double theta);
 	}
 	
 }
