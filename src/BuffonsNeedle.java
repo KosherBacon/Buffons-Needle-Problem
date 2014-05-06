@@ -72,7 +72,7 @@ public class BuffonsNeedle {
 			@Override
 			public void run() {
 				while (running) {
-					System.out.print(w2.multiply(new BigDecimal(yo.other)).divide(new BigDecimal(yo.yes), 20, RoundingMode.HALF_UP) + "\r");
+					System.out.print(w2.multiply(new BigDecimal(yo.other)).divide(new BigDecimal(yo.yes), 20, RoundingMode.HALF_UP) + " " + yo.other + " : " + yo.yes + "\r");
 					try {
 						java.lang.Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -109,6 +109,6 @@ class Point {
 
 class YesOther {
 	
-	public int yes = 0, other = 0;
+	public long yes = 0, other = 0;
 	
 }
