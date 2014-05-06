@@ -10,7 +10,7 @@ public class BuffonsNeedle {
 		
 		boolean running = true;
 		
-		Center c = (x,theta) -> {return new Point(x,theta);};
+		Center c = (x,theta) -> {return new Point(x,theta % 90D);};
 		
 		Runnable r = new Runnable() {
 			@Override
@@ -21,7 +21,8 @@ public class BuffonsNeedle {
 						yo.yes++;
 					}
 					else {
-						System.out.println(t.theta);
+						if (l / 2D * Math.cos(t.theta * Math.PI / 180D) < l / 2D) {
+						}
 					}
 					yo.other++;
 				}
