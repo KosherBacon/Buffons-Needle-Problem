@@ -16,6 +16,9 @@ public class BuffonsNeedle {
 		
 		YesOther yo = new YesOther();
 		
+		// Relatively accurate starting point
+		yo.setValues(55596480881L, 35393808771L);
+		
 		boolean running = true;
 		
 		Center c = (x,theta) -> {return new Point(x,theta % 90D);};
@@ -111,4 +114,8 @@ class YesOther {
 	
 	public long yes = 0, other = 0;
 	
+	public void setValues(long yes, long other) {
+		this.yes = yes;
+		this.other= other;
+	}
 }
