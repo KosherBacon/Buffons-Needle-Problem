@@ -114,7 +114,7 @@ class YesOther {
 	
 	public long yes = 0, other = 0;
 	
-	public void setValues(long yes, long other) {
+	public void setValues(long other, long yes) {
 		this.yes = yes;
 		this.other= other;
 	}
