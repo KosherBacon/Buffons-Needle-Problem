@@ -17,7 +17,7 @@ public class BuffonsNeedle {
 		YesOther yo = new YesOther();
 		
 		// Relatively accurate starting point
-		yo.setValues(55596480881L, 35393808771L);
+		yo.setValues(108619941777L, 69149339474L);
 		
 		boolean running = true;
 		
@@ -85,8 +85,7 @@ public class BuffonsNeedle {
 			}
 		};
 		
-		Thread print = new Thread(printer);
-		print.start();
+		executorService.submit(printer);
 		
 	}
 	
