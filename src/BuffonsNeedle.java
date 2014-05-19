@@ -23,7 +23,7 @@ public class BuffonsNeedle {
 		
 		Center c = (x,theta) -> {return new Point(x,theta % 90D);};
 		
-		Left left = (theta) -> {return l / 2D * Math.cos(theta * Math.PI / 180D);};
+		Left left = (theta) -> {return l / 2D * Math.cos(Math.toRadians(theta));};
 		
 		int cpus = Runtime.getRuntime().availableProcessors();
 		int maxThreads = cpus * 1;
